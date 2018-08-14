@@ -142,6 +142,13 @@
       module.exports = SDK;
     }
   </script>
+  <script runat="server">
+    Platform.Load("Core","1");
+    var Product = DataExtension.Init("Product");
+    var filter = { Property: "sku", SimpleOperator: "equal", Value: '31427' };
+    var data = Product.Rows.Retrieve(filter);
+    console.log(data);
+  </script>
   <script>
     const sdk = new window.sfdc.BlockSDK();
 
