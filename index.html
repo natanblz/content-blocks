@@ -5,13 +5,33 @@
   <title>Beleza na Web - Product</title>
 </head>
 <body>
-  <div id="output-code"></div>
+  <div id="output-code" editable="true"></div>
 
   <script src="script/blocksdk.js"></script>
   <script>
     const sdk = new window.sfdc.BlockSDK();
+    const $code = document.getElementById('#output-code');
 
-    
+    sdk.getContent((content) => {
+      $code.root.innerHTML = content;
+
+      function saveCode() {
+        const response = $code.root.innerHTML;
+
+        sdk.setContent(response);
+        sdk.setSuperContent(`Preview: ${content}`);
+
+        sdk.getData((data) => {
+          const requests = data.requests || 0;
+
+          sdk.setData({
+            requests: ++request
+          });
+        });
+      }
+
+      $code.addEventListener('onchange', saveCode);
+    });    
   </script>
 </body>
 </html>
