@@ -12,6 +12,11 @@ const restClient = new fuelRest(settings);
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res
+    .sendFile('index.html', { root: __dirname });
+});
+
 app.get('/product/:sku', (req, res) => {
   const sku = req.params.sku;
 
@@ -20,7 +25,7 @@ app.get('/product/:sku', (req, res) => {
     headers: {}
   };
 
-  RestClient.get(options)
+  restClient.get(options)
     .then((response) => {
         console.log(response);
         res
