@@ -13,12 +13,14 @@
   <script src="script/blocksdk.js"></script>
   <script>
     const sdk = new window.sfdc.BlockSDK();
-    const $sku = document.getElementById('sku');
 
     sdk.getContent((content) => {
+      const $sku = document.getElementById('sku');
       $sku.textContent = content;
 
       function getProduct() {
+        console.log('getProduct');
+
         const response = {
           'sku': '123',
           'name': 'Some product'
@@ -28,7 +30,7 @@
         sdk.setSuperContent(`Preview: ${content}`);
       }
 
-      $sku.addEventListener('onchange', getProduct);
+      $sku.addEventListener('change', getProduct);
     });    
   </script>
 </body>
