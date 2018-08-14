@@ -30,7 +30,7 @@ app.get('/product/:sku', (req, res) => {
         console.log(response);
         res
           .status(200)
-          .json(response);
+          .json(response.body);
     })
     .catch((error) => {
         console.log(error);
