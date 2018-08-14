@@ -1,0 +1,19 @@
+{
+  "name": "blz-content-blocks",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Content Blocks to use in Content Builder",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "fuel-rest": "3.0.4"
+  },
+  "keywords": [
+    "content block",
+    "content builder"
+  ],
+  "author": "Beleza na Web"
+}
