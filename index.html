@@ -151,14 +151,26 @@
 
       function getProduct() {
         console.log('getProduct');
+        const response = {};
 
-        const response = {
-          'sku': '123',
-          'name': 'Some product'
+        var request = new XMLHttpRequest();
+
+        request.open('GET', `https://blz-na-web-content-blocks.herokuapp.com/product/${$sku.textContent}`, true);
+
+        request.onreadystatechange = () => {
+          if (r.readyState != 4 || r.status != 200) return;
+
+          response = request.responseText;
         };
 
-        sdk.setContent(response);
-        sdk.setSuperContent(`Preview: ${content}`);
+        sdk.setContent($sku.textContent);
+        sdk.setSuperContent(`
+          Response: ${response}
+        `);
+
+        sdk.setData({
+          product: response
+        });
       }
 
       $sku.addEventListener('change', getProduct);
