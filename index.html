@@ -161,6 +161,8 @@
           if (r.readyState != 4 || r.status != 200) return;
 
           response = request.responseText;
+
+          console.log(JSON.parse(response));
         };
 
         sdk.setContent($sku.textContent);
